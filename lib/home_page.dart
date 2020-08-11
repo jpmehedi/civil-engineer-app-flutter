@@ -4,6 +4,8 @@ import 'package:civil_engineer/converter.dart';
 import 'package:civil_engineer/estimate.dart';
 import 'package:civil_engineer/supervision.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'components/bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,10 +46,79 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.home),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: Container(
-        color: Colors.blueGrey,
-        child: Column(
-          children: <Widget>[],
+      body: GridView.count(
+        primary: false,
+        padding: const EdgeInsets.all(20),
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        children: <Widget>[
+          GridViewCardBuilder(
+            image: Image.asset('images/exavation.jpg'),
+            title: 'Exavation',
+          ),
+          GridViewCardBuilder(
+            image: Image.asset('images/brickwall.jpg'),
+            title: 'Brick Work',
+          ),
+          GridViewCardBuilder(
+            image: Image.asset('images/rccwork.jpg'),
+            title: 'R.C.C Work',
+          ),
+          GridViewCardBuilder(
+            image: Image.asset('images/plasterwork.jpg'),
+            title: 'Plaster Work',
+          ),
+          GridViewCardBuilder(
+            image: Image.asset('images/rainforcement.jpg'),
+            title: 'Rainforcement',
+          ),
+          GridViewCardBuilder(
+            image: Image.asset('images/paintwork.jpg'),
+            title: 'Paint Work',
+          ),
+          GridViewCardBuilder(
+            image: Image.asset('images/tailswork.jpg'),
+            title: 'Tiles Work',
+          ),
+          GridViewCardBuilder(
+            image: Image.asset('images/paintwork.jpg'),
+            title: 'Exavation',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class GridViewCardBuilder extends StatelessWidget {
+  GridViewCardBuilder({this.image, this.title});
+  final Widget image;
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5.0),
+        child: InkWell(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              image,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 15),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Color(0xFFEF7532),
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
